@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Times New Roman;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #A9A9A9;
+  color: #000000;
+  float: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 75%;
+      }
+      td, th {
+      border: 2px solid #dddddd;
+      text-align: left;
+      padding: 5px;
+      }
+      tr:nth-child(even) {
+      background-color: #A9A9A9;
+      }
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+  color: #000000;
+}
+
+#Home {background-color: white;}
+#News {background-color: white;}
+#Contact {background-color: white;}
+</style>
+</head>
+<body>
+
+<center>
+<button class="tablink" onclick="openPage('Home', this, 'white')" id="defaultOpen"><b>Cibil Details</b></button>
+<button class="tablink" onclick="openPage('News', this, 'white')"><b>Enquriy Segment</b></button>
+<button class="tablink" onclick="openPage('Contact', this, 'white')"><b>Accounts Segment</b></button>
+</center>
+
+<div id="Home" class="tabcontent">
+<center>
+ <table style="width:900px">
+    <tr>
+        {% for col in column_names1 %}
+        <th style="text-align:center">{{col}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in row_data1 %}
+    <tr>
+        {% for col in row %}
+        <td>
+                {{ col }}
+                
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </table>
+</center>
+</div>
+
+<div id="News" class="tabcontent">
+  <center>
+ <table style="width:900px">
+    <tr>
+        {% for col in column_names2 %}
+        <th style="text-align:center">{{col}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in row_data2 %}
+    <tr>
+        {% for col in row %}
+        <td>
+                {{ col }}
+                
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </table>
+</center>
+</div>
+
+<div id="Contact" class="tabcontent">
+  <center>
+ <table style="width:600px">
+    <tr>
+        {% for col in column_names3 %}
+        <th style="text-align:center">{{col}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in row_data3 %}
+    <tr>
+        {% for col in row %}
+        <td>
+                {{ col }}
+                
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </table>
+</center>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>
+</html> 
